@@ -1,0 +1,351 @@
+$first-color: #56CCF2;
+$second-color: #2F80ED;
+
+$mobile-padding: 25px;
+$phone-padding: 100px;
+$tablet-padding: 125px;
+
+$large_desktop_breakpoint: 1200px;
+$desktop_breakpoint: 992px;
+$tablet_breakpoint: 768px;
+$phone_breakpoint: 576px;
+
+@mixin phone {
+  @media screen and (min-width: #{$phone_breakpoint}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: #{$tablet_breakpoint}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: #{$desktop_breakpoint}) {
+    @content;
+  }
+}
+@mixin large-desktop {
+  @media screen and (min-width: #{$large_desktop_breakpoint}) {
+    @content;
+  }
+}
+
+@mixin flex-settings($flex-direction, $justify-content, $align-items) {
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@keyframes loading-animation {
+  form {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
+}
+
+.show {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  &__img {
+    width: 20px;
+    height: auto;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  padding: 0 $mobile-padding;
+  @include flex-settings(column, center, center);
+  @include phone {
+    padding: 0 $phone-padding;
+  }
+  @include tablet {
+    padding: 0 $tablet-padding;
+  }
+  @include large-desktop {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.form {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient($first-color, $second-color);
+  @include flex-settings(column, center, center);
+  &__label {
+    width: 100%;
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFFFFF;
+    @include flex-settings(column, flex-start, center);
+    @include phone {
+      font-size: 34px;
+    }
+    @include large-desktop {
+      font-size: 38px;
+    }
+  }
+  &__input {
+    width: 100%;
+    height: 40px;
+    margin: 3% 0;
+    border-radius: 40px;
+    border: none;
+    padding: 0 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    @include tablet {
+      width: 500px;
+      margin: 1% 0;
+    }
+  }
+  &__btn {
+    width: 180px;
+    height: 40px;
+    margin-top: 3%;
+    background: #FFFFFF;
+    border: none;
+    color: #212121;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 40px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    &:hover {
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+  }
+}
+
+.section-loading {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient($first-color, $second-color);
+  @include flex-settings(column, center, center);
+  .loading-circle {
+    width: 100px;
+    height: 100px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #6c5ce7;
+    animation-name: loading-animation;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  .error-tile {
+    .error-msg {
+      color: #FFFFFF;
+      font-size: 30px;
+      text-align: center;
+      a {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.section-weather {
+  width: 100%;
+  @include flex-settings(column, center, center);
+}
+
+.current-weather {
+  display: flex;
+  width: 100%;
+  min-height: 75vh;
+  padding: 10% 0;
+  background: linear-gradient($first-color, $second-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  @include flex-settings(column, center, center);
+  .city-info {
+    display: flex;
+    @include flex-settings(column, flex-start, center);
+    color: #FFFFFF;
+    font-weight: bold;
+    &__day {
+      font-size: 34px;
+      text-transform: uppercase;
+      @include phone {
+        font-size: 40px;
+      }
+      @include tablet {
+        font-size: 46px;
+      }
+      @include large-desktop {
+        font-size: 50px;
+      }
+    }
+    &__date {
+      font-size: 24px;
+      @include phone {
+        font-size: 30px;
+      }
+      @include tablet {
+        font-size: 36px;
+      }
+      @include large-desktop {
+        font-size: 40px;
+      }
+    }
+    &__city {
+      font-size: 32px;
+      margin-top: 15%;
+      @include phone {
+        font-size: 38px;
+      }
+      @include tablet {
+        font-size: 44px;
+      }
+      @include large-desktop {
+        font-size: 48px;
+      }
+    }
+    .weather {
+      display: flex;
+      @include flex-settings(column, center, center);
+      @include tablet {
+        flex-direction: row;
+      }
+      &__img {
+        width: 220px;
+        margin-top: 5%;
+        @include tablet {
+          width: 120px;
+          margin-top: 5%;
+        }
+        @include large-desktop {
+          width: 140px;
+        }
+      }
+      &__value {
+        font-size: 45px;
+        @include phone {
+          font-size: 51px;
+        }
+        @include tablet {
+          font-size: 100px;
+          margin-left: 20px;
+        }
+        @include large-desktop {
+          font-size: 110px;
+        }
+      }
+    }
+  }
+}
+
+.future-weather {
+  width: 100%;
+  min-height: 25vh;
+  .future-weather-list {
+    width: 100%;
+    list-style-type: none;
+    margin-top: 10%;
+    font-weight: bold;
+    @include tablet {
+      display: flex;
+      @include flex-settings(row, space-around, center);
+    }
+    @include desktop {
+      justify-content: center;
+    }
+    @include large-desktop {
+      margin-top: 6%;
+      margin-bottom: 3%;
+    }
+    &__item {
+      position: relative;
+      display: flex;
+      color: #212121;
+      margin-bottom: 10%;
+      padding-bottom: 3%;
+      border-bottom: 1px solid #757575;
+      @include flex-settings(row, flex-end, center);
+      @include tablet {
+        flex-direction: column;
+        justify-content: center;
+        border: none;
+      }
+      @include desktop {
+        margin: 0 6%;
+      }
+    }
+    &__day {
+      position: absolute;
+      left: 0;
+      font-size: 16px;
+      @include phone {
+        font-size: 22px;
+      }
+      @include tablet {
+        position: static;
+        font-size: 28px;
+      }
+      @include large-desktop {
+        font-size: 32px;
+      }
+    }
+    &__img {
+      width: 35px;
+      align-self: flex-end;
+      margin-right: 10px;
+      @include tablet {
+        width: 100px;
+        margin: 10% 0;
+      }
+      @include large-desktop {
+        width: 120px;
+      }
+    }
+    &__value {
+      font-size: 18px;
+      @include phone {
+        font-size: 20px;
+      }
+      @include tablet {
+        font-size: 25px;
+      }
+      @include large-desktop {
+        font-size: 29px;
+      }
+    }
+  }
+}
