@@ -9,4 +9,4 @@ Skrypt korzysta z metaweather API: [https://www.metaweather.com/](https://www.me
  - SASS
  - JavaScript (ES6)
  
- LIVE: [https://danroxx.github.io/WeatherApp/assets/index.html](https://danroxx.github.io/WeatherApp/assets/index.html)
+ LIVE: [https://adamracibor.github.io/WeatherApp/assets/](https://adamracibor.github.io/WeatherApp/assets/)
